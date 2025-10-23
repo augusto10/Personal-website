@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Analytics } from '@/components/Analytics'
+import { AdminStats } from '@/components/AdminStats'
 
 export const metadata: Metadata = {
   title: 'Portfólio • Jose Augusto Nascimento',
@@ -25,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-br">
       <body>
         {children}
+        <Analytics />
+        <AdminStats />
       </body>
     </html>
   )
