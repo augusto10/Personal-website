@@ -13,63 +13,94 @@ export const site = {
   },
   services: [
     {
-      title: 'Gestão Logística',
-      description: 'Sistemas e dashboards para otimizar rotas, custos e KPIs logísticos.',
-      icon: 'truck'
-    },
-    {
-      title: 'Soluções 360',
-      description: 'Soluções ponta a ponta: front, backend, integrações e automações.',
-      icon: 'sparkles'
-    },
-    {
-      title: 'Análise de Crédito',
-      description: 'Ferramentas para scoring, antifraude e tomada de decisão.',
-      icon: 'shield'
-    },
-    {
       title: 'Sites Institucionais',
-      description: 'Sites rápidos, responsivos e com SEO pronto para ranquear.',
+      description: 'Sites profissionais, responsivos e otimizados para SEO. Presença digital que gera credibilidade e resultados.',
       icon: 'globe'
     },
     {
-      title: 'E-commerce',
-      description: 'Lojas modernas com foco em conversão e performance.',
+      title: 'Sistemas Empresariais',
+      description: 'ERP, CRM, dashboards e sistemas sob medida. Automação que aumenta produtividade e reduz custos.',
+      icon: 'truck'
+    },
+    {
+      title: 'Landing Pages',
+      description: 'Páginas de alta conversão para campanhas, produtos e serviços. Design focado em resultados.',
+      icon: 'sparkles'
+    },
+    {
+      title: 'E-commerce Completo',
+      description: 'Lojas virtuais modernas com pagamentos, gestão de estoque e relatórios. Venda mais online.',
       icon: 'shoppingBag'
+    },
+    {
+      title: 'Aplicações Web',
+      description: 'Sistemas web personalizados, APIs e integrações. Soluções tecnológicas para qualquer necessidade.',
+      icon: 'shield'
+    },
+    {
+      title: 'Consultoria Digital',
+      description: 'Análise técnica, arquitetura de sistemas e estratégia digital. Orientação especializada para seu projeto.',
+      icon: 'sparkles'
     }
   ],
   projects: [
     {
-      title: 'Dashboard de Gestão Logística',
-      description: 'Sistema completo para otimizar rotas, rastreamento e KPIs em tempo real.',
-      stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Chart.js'],
-      liveUrl: 'https://logistica-dashboard.vercel.app', // substitua pelo seu deploy real
-      codeUrl: 'https://github.com/augusto10/logistica-dashboard',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=60'
+      title: 'Sistema de Gestão Logística',
+      description: 'Plataforma completa para gestão de frotas, rotas e controle logístico empresarial.',
+      stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      liveUrl: 'https://gestao-logistica.vercel.app/',
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&auto=format&fit=crop&q=60',
+      status: 'Em produção',
+      client: 'Empresa de Logística',
+      demoCredentials: {
+        user: 'demo@logistica.com',
+        password: 'demo123'
+      },
+      features: ['Dashboard em tempo real', 'Gestão de frotas', 'Relatórios avançados', 'Controle de rotas']
     },
     {
-      title: 'Plataforma de Análise de Crédito',
-      description: 'Ferramenta para scoring, antifraude e tomada de decisão automatizada.',
-      stack: ['React', 'Python', 'FastAPI', 'TensorFlow'],
-      liveUrl: 'https://credito-analysis.vercel.app', // substitua pelo seu deploy real
-      codeUrl: 'https://github.com/augusto10/credito-analysis',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=60'
+      title: 'Análise de Crédito Esplendor',
+      description: 'Sistema inteligente para análise de crédito, scoring e avaliação de risco financeiro.',
+      stack: ['React', 'Node.js', 'API Integration', 'Chart.js'],
+      liveUrl: 'https://analise-credito-esplendor.vercel.app/',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=60',
+      status: 'Em produção',
+      client: 'Esplendor Atacadista',
+      demoCredentials: {
+        user: 'demo@esplendor.com',
+        password: 'demo2023'
+      },
+      features: ['Scoring automático', 'Análise de risco', 'Relatórios detalhados', 'Dashboard executivo']
     },
     {
-      title: 'E-commerce Soluções 360',
-      description: 'Loja online com integrações, pagamentos e gestão de estoque.',
-      stack: ['Next.js', 'Stripe', 'MongoDB', 'Tailwind CSS'],
-      liveUrl: 'https://ecommerce-360.vercel.app', // substitua pelo seu deploy real
-      codeUrl: 'https://github.com/augusto10/ecommerce-360',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&auto=format&fit=crop&q=60'
+      title: 'Site Urântia 2027',
+      description: 'Site institucional moderno com design responsivo e otimização para SEO.',
+      stack: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+      liveUrl: 'https://site-urantia-2027.vercel.app/',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=60',
+      status: 'Público',
+      client: 'Organização Urântia',
+      features: ['Design responsivo', 'SEO otimizado', 'Performance alta', 'CMS integrado']
     },
     {
-      title: 'Site Institucional Corporativo',
-      description: 'Site responsivo com SEO otimizado e design moderno.',
-      stack: ['Next.js', 'Sanity CMS', 'Vercel'],
-      liveUrl: 'https://site-institucional.vercel.app', // substitua pelo seu deploy real
-      codeUrl: 'https://github.com/augusto10/site-institucional',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=60'
+      title: 'Soluções Esplendor Atacadista',
+      description: 'Portal corporativo com soluções integradas para gestão empresarial e vendas.',
+      stack: ['HTML5', 'CSS3', 'JavaScript', 'PHP'],
+      liveUrl: 'http://solucoes.esplendoratacadista.com.br/',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&auto=format&fit=crop&q=60',
+      status: 'Em produção',
+      client: 'Esplendor Atacadista',
+      features: ['Portal corporativo', 'Gestão de vendas', 'Relatórios gerenciais', 'Integração ERP']
+    },
+    {
+      title: 'Portfólio Profissional',
+      description: 'Site pessoal desenvolvido com Next.js, showcasing projetos e serviços.',
+      stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+      liveUrl: 'https://personal-website-cyan-gamma-82.vercel.app/',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&auto=format&fit=crop&q=60',
+      status: 'Público',
+      client: 'Projeto pessoal',
+      features: ['Design moderno', 'Animações suaves', 'Responsivo', 'Performance otimizada']
     }
   ] as Array<{
     title: string
@@ -78,5 +109,12 @@ export const site = {
     liveUrl: string
     codeUrl?: string
     image?: string
+    status: string
+    client: string
+    demoCredentials?: {
+      user: string
+      password: string
+    }
+    features: string[]
   }>
 }

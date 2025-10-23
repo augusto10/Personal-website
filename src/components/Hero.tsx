@@ -15,17 +15,26 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-extrabold tracking-tight"
             >
-              Olá, sou {site.name.split(' ')[0]} —
-              <span className="block text-white/80">{site.tagline}</span>
+              {site.name}
+              <span className="block text-brand text-3xl md:text-5xl mt-2">Desenvolvedor Fullstack</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
+              className="mt-6 text-xl text-white/80 max-w-3xl"
+            >
+              🚀 <strong>Desenvolvo sites, sistemas, landing pages e qualquer solução digital que sua empresa precisar!</strong>
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-4 text-lg text-white/70 max-w-2xl"
             >
-              Especialista em Next.js, Node.js e integrações. Transformo ideias em produtos digitais de alto impacto.
+              Formado em Análise e Desenvolvimento de Sistemas, especialista em tecnologias modernas de frontend e backend. Transformo suas ideias em realidade digital com qualidade profissional.
             </motion.p>
 
             <motion.div
