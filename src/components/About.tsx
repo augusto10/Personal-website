@@ -33,7 +33,8 @@ export function About() {
                 <div>
                   <h4 className="font-semibold text-lg text-brand">🎓 Formação Acadêmica</h4>
                   <p className="text-white/80 mt-1">
-                    <strong>Tecnólogo em Análise e Desenvolvimento de Sistemas</strong><br />
+                    <strong>Graduação em Análise e Desenvolvimento de Sistemas</strong><br />
+                    <em>Uniceub - Distrito Federal</em><br />
                     Focado em desenvolvimento de software, arquitetura de sistemas e metodologias ágeis.
                   </p>
                 </div>

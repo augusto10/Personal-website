@@ -52,10 +52,6 @@ export const site = {
       image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&auto=format&fit=crop&q=60',
       status: 'Em produção',
       client: 'Empresa de Logística',
-      demoCredentials: {
-        user: 'demo@logistica.com',
-        password: 'demo123'
-      },
       features: ['Dashboard em tempo real', 'Gestão de frotas', 'Relatórios avançados', 'Controle de rotas']
     },
     {
@@ -66,10 +62,6 @@ export const site = {
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&auto=format&fit=crop&q=60',
       status: 'Em produção',
       client: 'Esplendor Atacadista',
-      demoCredentials: {
-        user: 'demo@esplendor.com',
-        password: 'demo2023'
-      },
       features: ['Scoring automático', 'Análise de risco', 'Relatórios detalhados', 'Dashboard executivo']
     },
     {
@@ -111,10 +103,6 @@ export const site = {
     image?: string
     status: string
     client: string
-    demoCredentials?: {
-      user: string
-      password: string
-    }
     features: string[]
   }>
 }

@@ -1,5 +1,5 @@
 import { site } from '@/config/site'
-import { Lock, Building, CheckCircle, Eye } from 'lucide-react'
+import { Building, CheckCircle, Eye } from 'lucide-react'
 
 export function Projects() {
   const items = site.projects
@@ -8,7 +8,7 @@ export function Projects() {
       <div className="container-max">
         <h2 className="section-title">Projetos em destaque</h2>
         <p className="section-subtitle">
-          Sistemas reais em produção, desenvolvidos para empresas. Alguns possuem acesso demo disponível.
+          Sistemas reais em produção, desenvolvidos para empresas.
         </p>
 
         {items.length === 0 ? (
@@ -71,19 +71,6 @@ export function Projects() {
                     </div>
                   </div>
 
-                  {/* Credenciais Demo */}
-                  {p.demoCredentials && (
-                    <div className="mb-4 p-3 bg-yellow-500/10 rounded-2xl border border-yellow-500/20">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Lock size={14} className="text-yellow-400" />
-                        <span className="text-sm font-semibold text-yellow-400">Acesso Demo Disponível</span>
-                      </div>
-                      <div className="text-xs text-white/70 space-y-1">
-                        <div><strong>Usuário:</strong> {p.demoCredentials.user}</div>
-                        <div><strong>Senha:</strong> {p.demoCredentials.password}</div>
-                      </div>
-                    </div>
-                  )}
 
                   {/* Botões */}
                   <div className="flex gap-3">
@@ -93,7 +80,7 @@ export function Projects() {
                       className="btn-primary text-sm flex items-center gap-2 flex-1 justify-center"
                     >
                       <Eye size={16} />
-                      {p.demoCredentials ? 'Testar sistema' : 'Ver projeto'}
+                      Ver projeto
                     </a>
                     {p.status === 'Em produção' && (
                       <div className="flex items-center gap-1 text-xs text-green-400 bg-green-500/10 px-3 py-2 rounded-full">
