@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder do case Catalogo Esplendor</title>
+  <desc id="desc">Espaco reservado para screenshot real do sistema.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#151824"/>
+      <stop offset="100%" stop-color="#0a0c12"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect x="84" y="84" width="1432" height="832" rx="36" fill="none" stroke="#2d3345" stroke-width="4" stroke-dasharray="14 14"/>
+  <text x="120" y="180" fill="#9aa4bf" font-size="36" font-family="Arial, sans-serif">Catálogo Esplendor Atacadista</text>
+  <text x="120" y="240" fill="#ffffff" font-size="72" font-family="Arial, sans-serif">Adicionar screenshot principal</text>
+  <text x="120" y="320" fill="#7e87a3" font-size="30" font-family="Arial, sans-serif">Substitua este arquivo por uma imagem real tratada para portfólio.</text>
+</svg>

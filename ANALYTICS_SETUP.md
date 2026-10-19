@@ -1,66 +1,25 @@
-# 📊 Configuração do Sistema de Analytics
+# Painel de visitas
 
-## Como funciona o contador de visitas
+O painel fica em `/admin` e mostra total de acessos, IPs únicos, acessos do dia e os últimos 250 registros com IP, horário, página, origem e navegador.
 
-### 🔒 **Sistema Privado (Apenas para você)**
+## Configuração
 
-1. **Acesso Admin**: 
-   - Clique no pequeno ponto no canto inferior direito
-   - Digite a senha: `augusto123`
-   - Aparecerá um botão de analytics
+1. Crie um banco PostgreSQL (Neon funciona bem com a hospedagem na Vercel).
+2. Copie `.env.example` para `.env.local` durante o desenvolvimento e substitua `DATABASE_URL` pela URL completa de conexão PostgreSQL copiada dos detalhes do seu banco Neon (não use o texto de exemplo).
+3. Configure `DATABASE_URL`, `ADMIN_PASSWORD` e `ADMIN_SESSION_SECRET` também nas variáveis de ambiente da hospedagem.
+4. Gere `ADMIN_SESSION_SECRET` como uma sequência aleatória longa, diferente da senha.
+5. Reinicie o servidor. A tabela e o índice são criados automaticamente no primeiro acesso.
 
-2. **Visualizar Estatísticas**:
-   - Clique no ícone de gráfico (📊)
-   - Veja: Total de visitas, última visita, sessão atual
-   - Apenas você pode ver essas informações
+Não coloque senhas reais no Git. O cookie administrativo é `HttpOnly`, assinado e expira após 12 horas. Visitas repetidas do mesmo IP e página em menos de 30 minutos não são duplicadas. Registros com mais de 90 dias são apagados automaticamente quando uma nova visita é gravada.
 
-### 📈 **Google Analytics (Opcional - Mais Completo)**
+O site respeita o sinal “Não rastrear” do navegador e explica a coleta em `/privacidade`.
 
-Para estatísticas mais detalhadas:
+## Projetos e imagens
 
-1. **Criar conta Google Analytics**:
-   - Acesse: https://analytics.google.com
-   - Crie uma propriedade GA4
-   - Copie o ID (formato: G-XXXXXXXXXX)
+O painel `/admin` também permite criar, editar, destacar e excluir projetos. As alterações são salvas no mesmo banco Neon. Cada imagem pode ter até 2 MB; JPEG, PNG e WebP são aceitos. O link público do projeto aparece no destaque quando a opção de projeto privado está desmarcada.
 
-2. **Configurar no site**:
-   - Edite `src/components/Analytics.tsx`
-   - Substitua `G-XXXXXXXXXX` pelo seu ID real (2 lugares)
-   - Faça commit e deploy
+Os projetos que já existiam no portfólio são adicionados ao banco automaticamente na primeira leitura após a atualização, sem substituir projetos já salvos com os mesmos identificadores.
 
-## 🛡️ **Segurança**
+## Redefinir a senha administrativa
 
-- **Contador local**: Armazenado no navegador, invisível para visitantes
-- **Acesso admin**: Protegido por senha secreta
-- **Google Analytics**: Dados privados na sua conta Google
-
-## 🎯 **Funcionalidades**
-
-### **Contador Simples**
-- ✅ Conta cada visita única
-- ✅ Registra data/hora da última visita
-- ✅ Interface privada para visualização
-- ✅ Botão de reset das estatísticas
-
-### **Google Analytics (se configurado)**
-- ✅ Visitantes únicos vs recorrentes
-- ✅ Páginas mais visitadas
-- ✅ Tempo de permanência
-- ✅ Localização geográfica
-- ✅ Dispositivos utilizados
-- ✅ Relatórios detalhados
-
-## 🔧 **Como usar**
-
-1. **Ativar modo admin**: Clique no ponto → digite `augusto123`
-2. **Ver stats**: Clique no ícone 📊
-3. **Resetar**: Botão "Resetar Stats" no painel
-4. **Sair**: Botão "Sair Admin"
-
-## 📱 **Responsivo**
-
-O painel funciona em desktop e mobile, sempre acessível apenas para você.
-
----
-
-**Nota**: As senhas estão no código. Para maior segurança em produção, considere usar variáveis de ambiente.
+Não existe recuperação por e-mail. Para trocar uma senha esquecida, defina um novo valor para `ADMIN_PASSWORD` nas variáveis de ambiente da hospedagem (por exemplo, em **Vercel → Project Settings → Environment Variables**) e faça um novo deploy. Para desenvolvimento local, altere `ADMIN_PASSWORD` em `.env.local` e reinicie o servidor. Mantenha `ADMIN_SESSION_SECRET` configurado e não compartilhe nem envie os valores das variáveis.

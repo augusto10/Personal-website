@@ -1,34 +1,43 @@
 import type { Metadata } from 'next'
+import { site } from '@/config/site'
 import './globals.css'
 import { Analytics } from '@/components/Analytics'
-import { AdminStats } from '@/components/AdminStats'
 
 export const metadata: Metadata = {
-  title: 'Portfólio • Jose Augusto Nascimento',
-  description: 'Desenvolvedor Fullstack — soluções modernas para web e negócios.',
+  metadataBase: new URL(site.baseUrl),
+  title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+  description:
+    'Desenvolvedor Full Stack especializado em aplicacoes web, APIs, integracoes com ERP, automacao de processos e sustentacao de sistemas em producao.',
   icons: {
-    icon: [{ url: '/favicon.ico' }]
+    icon: [{ url: '/favicon.ico' }],
   },
   openGraph: {
-    title: 'Jose Augusto Nascimento — Desenvolvedor Fullstack',
-    description: 'Portfólio moderno com projetos e serviços: gestão logística, soluções 360, análise de crédito, sites e e-commerce.',
-    url: 'https://',
-    siteName: 'Portfólio Jose Augusto Nascimento',
+    title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+    description:
+      'Portfolio profissional com cases em producao, integracoes com ERP, automacao de processos e sustentacao de aplicacoes corporativas.',
+    url: site.baseUrl,
+    siteName: 'Jose Augusto | Portfolio profissional',
     images: [
-      { url: '/og.png', width: 1200, height: 630, alt: 'Portfólio Jose Augusto' }
+      { url: '/og.png', width: 1200, height: 630, alt: 'Portfolio profissional de Jose Augusto' },
     ],
     locale: 'pt_BR',
-    type: 'website'
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+    description:
+      'Cases em producao, integracoes corporativas, automacao de processos e sustentacao de aplicacoes.',
+    images: ['/og.png'],
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br">
+    <html lang="pt-BR">
       <body>
         {children}
         <Analytics />
-        <AdminStats />
       </body>
     </html>
   )
