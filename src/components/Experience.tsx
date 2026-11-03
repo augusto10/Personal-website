@@ -9,20 +9,23 @@ const capabilities = [
 
 export function Experience() {
   return (
-    <section id="experiencia" className="section">
+    <section id="experiencia" className="section border-t border-[#17211d]/[0.07] bg-white/45">
       <div className="container-max">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr,1.2fr] lg:items-center">
           <div>
-            <p className="eyebrow">Como eu trabalho</p>
-            <h2 className="section-title mt-4">Do problema ao sistema em produção</h2>
-            <p className="max-w-xl leading-8 text-white/65">Atuo no ciclo completo: entendo a rotina, desenho a solução, desenvolvo, integro, publico e acompanho o uso real. Isso me permite conversar tanto com áreas de negócio quanto com equipes técnicas.</p>
+            <p className="eyebrow">Parceria de ponta a ponta</p>
+            <h2 className="section-title mt-4">Tecnologia com acompanhamento em cada etapa.</h2>
+            <p className="max-w-xl leading-8 text-[#64716b]">O projeto começa entendendo a rotina e o resultado esperado. A partir daí, construímos a solução juntos, validamos os fluxos e evoluímos com base no uso real.</p>
+            <a href="#contato" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#176b4b] hover:text-[#10563b]">
+              Conversar sobre meu desafio <span aria-hidden="true">→</span>
+            </a>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {capabilities.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="surface-card rounded-3xl p-6">
-                <Icon size={21} className="text-brand-light" />
+              <div key={title} className="surface-card rounded-3xl p-6 transition-transform hover:-translate-y-1">
+                <Icon size={21} className="text-[#176b4b]" />
                 <h3 className="mt-4 text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm leading-7 text-white/60">{text}</p>
+                <p className="mt-2 text-sm leading-7 text-[#64716b]">{text}</p>
               </div>
             ))}
           </div>

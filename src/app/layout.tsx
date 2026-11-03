@@ -5,16 +5,16 @@ import { Analytics } from '@/components/Analytics'
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.baseUrl),
-  title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+  title: 'José Augusto | Sistemas Web, APIs e Integrações',
   description:
-    'Desenvolvedor Full Stack especializado em aplicacoes web, APIs, integracoes com ERP, automacao de processos e sustentacao de sistemas em producao.',
+    'Desenvolvimento de sistemas web sob medida, APIs, integrações com ERP e automação de processos. Conheça projetos em produção e vamos conversar sobre o seu desafio.',
   icons: {
     icon: [{ url: '/favicon.ico' }],
   },
   openGraph: {
-    title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+    title: 'José Augusto | Sistemas Web, APIs e Integrações',
     description:
-      'Portfolio profissional com cases em producao, integracoes com ERP, automacao de processos e sustentacao de aplicacoes corporativas.',
+      'Sistemas web sob medida, integrações com ERP e automação de processos para empresas. Conheça os projetos e converse sobre o seu desafio.',
     url: site.baseUrl,
     siteName: 'Jose Augusto | Portfolio profissional',
     images: [
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jose Augusto | Desenvolvedor Full Stack, APIs e Integracoes',
+    title: 'José Augusto | Sistemas Web, APIs e Integrações',
     description:
-      'Cases em producao, integracoes corporativas, automacao de processos e sustentacao de aplicacoes.',
+      'Sistemas web sob medida, integrações corporativas e automação de processos.',
     images: ['/og.png'],
   },
 }

@@ -2,7 +2,7 @@ import { randomUUID } from 'crypto'
 import { neon } from '@neondatabase/serverless'
 import { site, type ProjectCase, type ProjectImage } from '@/config/site'
 
-const featuredIds = new Set(['pdv-atacado', 'gestao-logistica', 'catalogo-esplendor-atacadista', 'solucoes-esplendor', 'vendas-marketplace'])
+const featuredIds = new Set(['pdv-atacado', 'gestao-logistica', 'api-integracao-erp', 'catalogo-esplendor-atacadista', 'solucoes-esplendor', 'vendas-marketplace'])
 const privateFeaturedIds = new Set(['pdv-atacado', 'gestao-logistica', 'solucoes-esplendor'])
 let tablesReady = false
 
@@ -100,6 +100,54 @@ export async function getProjectCases(): Promise<ProjectCase[]> {
     }
   }
 
+  const [apiIntegrationSeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'api_integracao_erp_seed_v1'`
+  if (!apiIntegrationSeeded) {
+    const apiIntegration = defaultProjects().find((project) => project.id === 'api-integracao-erp')
+    if (apiIntegration) {
+      await sql`INSERT INTO portfolio_projects (id, data) VALUES (${apiIntegration.id}, ${JSON.stringify(apiIntegration)}::jsonb) ON CONFLICT (id) DO NOTHING`
+      const [storedApiIntegration] = await sql`SELECT id, data FROM portfolio_projects WHERE id = 'api-integracao-erp'`
+      if (storedApiIntegration && !rows.some((row) => String(row.id) === 'api-integracao-erp')) {
+        rows.push(storedApiIntegration)
+      }
+      await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('api_integracao_erp_seed_v1', TRUE) ON CONFLICT (key) DO NOTHING`
+    }
+  }
+
+  const [apiIntegrationDemoSeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'api_integracao_demo_cta_v1'`
+  if (!apiIntegrationDemoSeeded) {
+    const apiIntegrationIndex = rows.findIndex((row) => String(row.id) === 'api-integracao-erp')
+    if (apiIntegrationIndex >= 0) {
+      const savedProject = unpackProject(rows[apiIntegrationIndex].data)
+      const updatedProject = { ...savedProject, requestDemo: true }
+      await sql`UPDATE portfolio_projects SET data = ${JSON.stringify(updatedProject)}::jsonb, updated_at = NOW() WHERE id = 'api-integracao-erp'`
+      rows[apiIntegrationIndex] = { ...rows[apiIntegrationIndex], data: updatedProject }
+      await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('api_integracao_demo_cta_v1', TRUE) ON CONFLICT (key) DO NOTHING`
+    }
+  }
+
+  const [logisticsGallerySeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'gestao_logistica_gallery_v1'`
+  if (!logisticsGallerySeeded) {
+    const logisticsIndex = rows.findIndex((row) => String(row.id) === 'gestao-logistica')
+    const defaultLogistics = defaultProjects().find((project) => project.id === 'gestao-logistica')
+
+    if (logisticsIndex >= 0 && defaultLogistics) {
+      const savedProject = unpackProject(rows[logisticsIndex].data)
+      const newScreenshotSources = new Set(defaultLogistics.gallery.map((image) => image.src))
+      const retainedGallery = savedProject.gallery.filter((image) => !newScreenshotSources.has(image.src))
+      const updatedProject = {
+        ...savedProject,
+        image: ['/projects/gestao-logistica/dashboard-hero.png', '/projects/gestao-logistica/placeholder-main.png'].includes(savedProject.image.src)
+          ? defaultLogistics.image
+          : savedProject.image,
+        gallery: [...defaultLogistics.gallery, ...retainedGallery],
+      }
+
+      await sql`UPDATE portfolio_projects SET data = ${JSON.stringify(updatedProject)}::jsonb, updated_at = NOW() WHERE id = 'gestao-logistica'`
+      rows[logisticsIndex] = { ...rows[logisticsIndex], data: updatedProject }
+      await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('gestao_logistica_gallery_v1', TRUE) ON CONFLICT (key) DO NOTHING`
+    }
+  }
+
   const [marketplaceGallerySeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'vendas_marketplace_gallery_v1'`
   if (!marketplaceGallerySeeded) {
     const marketplaceIndex = rows.findIndex((row) => String(row.id) === 'vendas-marketplace')
@@ -174,6 +222,59 @@ export async function getProjectCases(): Promise<ProjectCase[]> {
       rows[support360Index] = { ...rows[support360Index], data: updatedProject }
       await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('suporte_360_gallery_v1', TRUE) ON CONFLICT (key) DO NOTHING`
     }
+  }
+
+  const [projectHomeCoversSeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'project_home_covers_v1'`
+  if (!projectHomeCoversSeeded) {
+    const coverUpdates = [
+      { id: 'pdv-atacado', previousSources: ['/projects/pdv-atacado/novo-produto.webp'] },
+      { id: 'gestao-logistica', previousSources: ['/projects/gestao-logistica/placeholder-main.png'] },
+      { id: 'varejo-web', previousSources: ['/projects/varejo-web/placeholder-main.png'] },
+      { id: 'portfolio-profissional', previousSources: ['/projects/portfolio-profissional/placeholder-main.svg'] },
+    ]
+    const defaultsById = new Map(defaultProjects().map((project) => [project.id, project]))
+
+    for (const coverUpdate of coverUpdates) {
+      const projectIndex = rows.findIndex((row) => String(row.id) === coverUpdate.id)
+      const defaultProject = defaultsById.get(coverUpdate.id)
+      if (projectIndex < 0 || !defaultProject) continue
+
+      const savedProject = unpackProject(rows[projectIndex].data)
+      if (!coverUpdate.previousSources.includes(savedProject.image.src)) continue
+
+      const updatedProject = { ...savedProject, image: defaultProject.image }
+      await sql`UPDATE portfolio_projects SET data = ${JSON.stringify(updatedProject)}::jsonb, updated_at = NOW() WHERE id = ${coverUpdate.id}`
+      rows[projectIndex] = { ...rows[projectIndex], data: updatedProject }
+    }
+
+    await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('project_home_covers_v1', TRUE) ON CONFLICT (key) DO NOTHING`
+  }
+
+  const [projectLoginCoversSeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'project_login_covers_v1'`
+  if (!projectLoginCoversSeeded) {
+    const previousCoverSources = new Map([
+      ['pdv-atacado', ['/projects/pdv-atacado/dashboard-hero.png', '/projects/pdv-atacado/novo-produto.webp']],
+      ['vendas-marketplace', ['/projects/vendas-marketplace/dashboard.webp', '/projects/vendas-marketplace/dashboard-placeholder.svg']],
+      ['varejo-web', ['/projects/varejo-web/dashboard-hero.png', '/projects/varejo-web/placeholder-main.png']],
+      ['gestao-logistica', ['/projects/gestao-logistica/operacao-01.png', '/projects/gestao-logistica/dashboard-hero.png', '/projects/gestao-logistica/placeholder-main.png']],
+      ['solucoes-esplendor', ['/projects/solucoes-esplendor/dashboard-hero.png']],
+    ])
+    const defaultsById = new Map(defaultProjects().map((project) => [project.id, project]))
+
+    for (const [id, previousSources] of previousCoverSources) {
+      const projectIndex = rows.findIndex((row) => String(row.id) === id)
+      const defaultProject = defaultsById.get(id)
+      if (projectIndex < 0 || !defaultProject) continue
+
+      const savedProject = unpackProject(rows[projectIndex].data)
+      if (savedProject.image.src === defaultProject.image.src || !previousSources.includes(savedProject.image.src)) continue
+
+      const updatedProject = { ...savedProject, image: defaultProject.image }
+      await sql`UPDATE portfolio_projects SET data = ${JSON.stringify(updatedProject)}::jsonb, updated_at = NOW() WHERE id = ${id}`
+      rows[projectIndex] = { ...rows[projectIndex], data: updatedProject }
+    }
+
+    await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('project_login_covers_v1', TRUE) ON CONFLICT (key) DO NOTHING`
   }
 
   if (!rows.length) {

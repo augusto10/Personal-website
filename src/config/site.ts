@@ -16,6 +16,7 @@ export type ProjectCase = {
   url: string
   featured?: boolean
   privateAccess?: boolean
+  requestDemo?: boolean
   summary: string
   description: string
   clientContext: string
@@ -64,6 +65,7 @@ export const site = {
   },
   socials: {
     linkedin: '',
+    github: 'https://github.com/augusto10',
   },
   recruiterCtas: [
     { label: 'Ver projetos em produção', href: '#cases' },
@@ -330,8 +332,8 @@ export const site = {
         'Exibir o case com segurança sem expor credenciais ou acesso interno',
       ],
       image: {
-        src: '/projects/pdv-atacado/novo-produto.webp',
-        alt: 'Busca e seleção de produtos no PDV Atacado',
+        src: '/projects/pdv-atacado/login.png',
+        alt: 'Tela de login do PDV Atacado',
         placeholder: false,
       },
       gallery: [
@@ -441,8 +443,8 @@ export const site = {
         'Manter desempenho e segurança em uma aplicação com acesso corporativo restrito',
       ],
       image: {
-        src: '/projects/vendas-marketplace/dashboard.webp',
-        alt: 'Painel de vendas do Vendas Marketplace com informações sensíveis ocultadas',
+        src: '/projects/vendas-marketplace/login.webp',
+        alt: 'Tela de login do Vendas Marketplace com credenciais ocultadas',
       },
       gallery: [
         {
@@ -506,8 +508,8 @@ export const site = {
         'Ajustar integrações e correções em ambiente ativo',
       ],
       image: {
-        src: '/projects/varejo-web/placeholder-main.png',
-        alt: 'Screenshot do Varejo Web',
+        src: '/projects/varejo-web/login.png',
+        alt: 'Tela de login do Varejo Web',
         placeholder: false,
       },
       gallery: [
@@ -563,32 +565,117 @@ export const site = {
         'Integrar dados externos com segurança e previsibilidade',
       ],
       image: {
-        src: '/projects/gestao-logistica/placeholder-main.png',
-        alt: 'Screenshot do Gestão Logística',
+        src: '/projects/gestao-logistica/login.png',
+        alt: 'Tela de login da Gestão Logística',
         placeholder: false,
       },
       gallery: [
         {
-          src: '/projects/gestao-logistica/login.png',
-          alt: 'Tela de login do Gestão Logística',
-          placeholder: false,
+          src: '/projects/gestao-logistica/operacao-01.png',
+          alt: 'Painel de controle de entregas com dados operacionais ocultados',
         },
         {
-          src: '/projects/gestao-logistica/dashboard-hero.png',
-          alt: 'Dashboard principal do Gestão Logística',
-          placeholder: false,
+          src: '/projects/gestao-logistica/operacao-02.png',
+          alt: 'Resumo de pedidos por etapa logística',
         },
         {
-          src: '/projects/gestao-logistica/notas.png',
-          alt: 'Tela de consulta de notas do Gestão Logística',
-          placeholder: false,
+          src: '/projects/gestao-logistica/operacao-03.png',
+          alt: 'Painel de acompanhamento de pedidos com dados identificáveis ocultados',
         },
         {
-          src: '/projects/gestao-logistica/integracoes-placeholder.png',
-          alt: 'Tela principal do Gestão Logística',
-          placeholder: false,
+          src: '/projects/gestao-logistica/operacao-04.png',
+          alt: 'Consulta de rastreamento de pedidos com dados identificáveis ocultados',
+        },
+        {
+          src: '/projects/gestao-logistica/operacao-05.png',
+          alt: 'Consulta de controles de carga com dados identificáveis ocultados',
+        },
+        {
+          src: '/projects/gestao-logistica/operacao-06.png',
+          alt: 'Consulta de produtos para geração de etiquetas',
+        },
+        {
+          src: '/projects/gestao-logistica/operacao-07.png',
+          alt: 'Prévia de etiqueta de produto',
+        },
+        {
+          src: '/projects/gestao-logistica/operacao-08.png',
+          alt: 'Gestão de motoristas com dados identificáveis ocultados',
         },
       ],
+    },
+    {
+      id: 'api-integracao-erp',
+      name: 'API de Integração com ERP',
+      category: 'production',
+      statusLabel: 'Em produção',
+      url: 'http://ec2-15-229-152-29.sa-east-1.compute.amazonaws.com/docs',
+      requestDemo: true,
+      summary: 'API REST para conectar aplicações aos dados de clientes, produtos, pedidos e indicadores do ERP.',
+      description:
+        'API desenvolvida com FastAPI para organizar e disponibilizar recursos do ERP por endpoints documentados.',
+      clientContext: 'Integração de dados entre o ERP corporativo e aplicações da operação.',
+      problem:
+        'As aplicações da empresa precisavam consultar informações do ERP por uma interface padronizada.',
+      solution:
+        'Foi criada uma API REST com documentação interativa OpenAPI/Swagger, autenticação por token e endpoints organizados por domínio.',
+      role: [
+        'Desenvolvimento da API REST',
+        'Integração com ERP',
+        'Organização dos endpoints',
+        'Documentação da API',
+        'Autenticação por token',
+      ],
+      features: [
+        'Autenticação e geração de token',
+        'Consultas de clientes, grupos e vendedores',
+        'Consultas de produtos e marcas',
+        'Consultas de pedidos e notas fiscais',
+        'Estatísticas e indicadores de clientes',
+        'Documentação interativa OpenAPI/Swagger',
+      ],
+      technologies: ['Python', 'FastAPI', 'REST API', 'OpenAPI 3.1', 'Swagger UI', 'AWS'],
+      integrations: ['ERP corporativo', 'Aplicações internas'],
+      technicalChallenges: [
+        'Disponibilizar dados do ERP em endpoints organizados e documentados',
+        'Proteger operações por autenticação sem dificultar a integração entre sistemas',
+      ],
+      image: {
+        src: '/projects/api-integracao-erp/docs-01.png',
+        alt: 'Documentação Swagger da API de Integração com ERP',
+      },
+      gallery: [
+        {
+          src: '/projects/api-integracao-erp/docs-01.png',
+          alt: 'Visão geral da documentação da API FastAPI',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-02.png',
+          alt: 'Endpoints de autenticação e consulta de clientes',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-03.png',
+          alt: 'Endpoints de consulta de produtos',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-04.png',
+          alt: 'Endpoints de consulta de pedidos e logística',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-05.png',
+          alt: 'Endpoints de grupos de clientes e notas fiscais',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-06.png',
+          alt: 'Endpoints de consulta e resumo de vendedores',
+        },
+        {
+          src: '/projects/api-integracao-erp/docs-07.png',
+          alt: 'Endpoints de estatísticas de clientes',
+        },
+      ],
+      publicNote:
+        'A API utiliza autenticação por token. Posso apresentar a documentação e os fluxos de integração em uma demonstração guiada.',
     },
     {
       id: 'solucoes-esplendor',
@@ -624,8 +711,8 @@ export const site = {
         'Manter o ambiente evoluindo sem perder estabilidade',
       ],
       image: {
-        src: '/projects/solucoes-esplendor/dashboard-hero.png',
-        alt: 'Painel principal do Suporte 360°',
+        src: '/projects/solucoes-esplendor/login.png',
+        alt: 'Tela de login do Suporte 360°',
         placeholder: false,
       },
       gallery: [
@@ -672,9 +759,9 @@ export const site = {
         'Melhorar narrativa, SEO e responsividade mantendo a base funcional',
       ],
       image: {
-        src: '/projects/portfolio-profissional/placeholder-main.svg',
-        alt: 'Placeholder para screenshot do portfólio profissional',
-        placeholder: true,
+        src: '/og.png',
+        alt: 'Imagem de apresentação do portfólio profissional',
+        placeholder: false,
       },
       gallery: [
         {
