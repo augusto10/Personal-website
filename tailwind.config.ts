@@ -9,6 +9,15 @@ export default {
   theme: {
     extend: {
       colors: {
+        portfolio: {
+          ink: 'var(--ink)',
+          muted: 'var(--muted)',
+          accent: 'var(--accent)',
+          hover: 'var(--accent-hover)',
+          line: 'var(--portfolio-stroke)',
+          soft: 'var(--accent-soft)',
+          surface: 'var(--surface)',
+        },
         brand: {
           DEFAULT: '#6E56CF',
           dark: '#4B3FA6',

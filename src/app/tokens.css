@@ -1,0 +1,30 @@
+:root {
+  --ink: #142d25;
+  --muted: #52645a;
+  --paper: #f2f5f2;
+  --surface: #fbfcfa;
+  --accent: #176b4b;
+  --accent-hover: #10563b;
+  --accent-dark: #10251d;
+  --accent-soft: #dce9df;
+  --on-dark: #f0f6f0;
+  --on-dark-muted: #bfd1c5;
+  --portfolio-stroke: #ced8d0;
+  --focus: #27694f;
+  --dark-bg: #080e0c;
+  --header-shadow: rgba(20,45,37,0.06);
+  --legacy-surface: #0d1511;
+  --legacy-card: rgba(255,255,255,0.05);
+  --legacy-shadow: rgba(0,0,0,0.38);
+  --skip-shadow: rgba(0,0,0,0.16);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --font-display: var(--font-archivo), sans-serif;
+  --font-body: var(--font-source), sans-serif;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+}

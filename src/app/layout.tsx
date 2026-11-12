@@ -2,21 +2,38 @@ import type { Metadata } from 'next'
 import { site } from '@/config/site'
 import './globals.css'
 import { Analytics } from '@/components/Analytics'
+import localFont from 'next/font/local'
+
+const archivo = localFont({
+  src: './fonts/archivo-latin.woff2',
+  weight: '400 600',
+  variable: '--font-archivo',
+  display: 'swap',
+})
+const sourceSans = localFont({
+  src: './fonts/source-sans-latin.woff2',
+  weight: '400 600',
+  variable: '--font-source',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.baseUrl),
-  title: 'José Augusto | Sistemas Web, APIs e Integrações',
+  title: 'José Augusto | Sites, Sistemas e Automações em Brasília',
   description:
-    'Desenvolvimento de sistemas web sob medida, APIs, integrações com ERP e automação de processos. Conheça projetos em produção e vamos conversar sobre o seu desafio.',
+    'Sites profissionais, sistemas sob medida, automações, aplicativos, catálogos digitais e integração com ERP para empresas em Brasília. Conheça projetos reais.',
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [{ url: '/favicon.ico' }],
   },
   openGraph: {
-    title: 'José Augusto | Sistemas Web, APIs e Integrações',
+    title: 'José Augusto | Sites, Sistemas e Automações em Brasília',
     description:
-      'Sistemas web sob medida, integrações com ERP e automação de processos para empresas. Conheça os projetos e converse sobre o seu desafio.',
+      'Desenvolvimento de sites, sistemas sob medida, automações, aplicativos e catálogos digitais para empresas em Brasília.',
     url: site.baseUrl,
-    siteName: 'Jose Augusto | Portfolio profissional',
+    siteName: 'José Augusto | Portfólio profissional',
     images: [
       { url: '/og.png', width: 1200, height: 630, alt: 'Portfolio profissional de Jose Augusto' },
     ],
@@ -25,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'José Augusto | Sistemas Web, APIs e Integrações',
+    title: 'José Augusto | Sites, Sistemas e Automações em Brasília',
     description:
-      'Sistemas web sob medida, integrações corporativas e automação de processos.',
+      'Sites profissionais, sistemas sob medida, automações e integrações com ERP para empresas em Brasília.',
     images: ['/og.png'],
   },
 }
@@ -35,7 +52,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className={`${archivo.variable} ${sourceSans.variable}`}>
         {children}
         <Analytics />
       </body>
