@@ -234,14 +234,14 @@ export const site = {
       category: 'production',
       statusLabel: 'Em produção',
       url: 'https://catalogo.esplendoratacadista.com.br/',
-      summary: 'Catálogo online que apoia a consulta comercial de produtos em ambiente real.',
+      summary: 'Catálogo digital de produtos com integração em tempo real ao ERP.',
       description:
-        'Aplicação web desenvolvida para facilitar a consulta de produtos e apoiar o processo comercial da empresa.',
+        'Aplicação web desenvolvida para consulta de produtos, com dados integrados em tempo real ao ERP e apoio ao processo comercial.',
       clientContext: 'Operação comercial e apoio à equipe de vendas.',
       problem:
         'A operação precisava de uma forma mais rápida e organizada de consultar produtos e informações comerciais.',
       solution:
-        'Foi criada uma aplicação web para centralizar catálogo, pesquisa e acesso a dados importantes para o processo de vendas.',
+        'Foi criada uma aplicação web para centralizar catálogo, pesquisa e informações comerciais, com integração em tempo real ao ERP.',
       role: [
         'Desenvolvimento',
         'Manutenção',
@@ -251,15 +251,16 @@ export const site = {
         'Sustentação',
       ],
       features: [
-        'Catálogo online',
-        'Consulta de produtos',
+        'Catálogo digital de produtos',
+        'Pesquisa e consulta de produtos',
+        'Integração em tempo real com ERP',
         'Informações comerciais',
         'Apoio à equipe de vendas',
         'Uso em ambiente real',
         'Evolução contínua',
       ],
       technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-      integrations: ['ERP corporativo', 'Dados internos da empresa'],
+      integrations: ['ERP corporativo — integração em tempo real'],
       technicalChallenges: [
         'Organizar informação comercial para uso rápido no dia a dia',
         'Evoluir o sistema sem interromper a rotina dos usuários',

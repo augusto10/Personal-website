@@ -6,6 +6,8 @@ export function StructuredData() {
     '@type': 'Person',
     name: site.name,
     jobTitle: site.role,
+    description:
+      'Desenvolvimento de sites profissionais, sistemas sob medida, aplicativos, automações e integrações com ERP para empresas em Brasília, DF.',
     url: site.baseUrl,
     email: site.contacts.email.replace('mailto:', '').split('?')[0],
     worksFor: {
@@ -13,7 +15,10 @@ export function StructuredData() {
       name: 'Projetos corporativos e freelancer',
     },
     knowsAbout: [
+      'Sites profissionais',
       'Desenvolvimento Full Stack',
+      'Aplicativos',
+      'Catálogos digitais',
       'APIs REST',
       'Integrações com ERP',
       'Automação de processos',

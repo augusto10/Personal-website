@@ -42,7 +42,22 @@ function defaultProjects(): ProjectCase[] {
 
 export async function getProjectCasesForPage(): Promise<{ projects: ProjectCase[]; databaseWarning?: string }> {
   try {
-    return { projects: await getProjectCases() }
+    const projects = await getProjectCases()
+    const catalogDefaults = defaultProjects().find((project) => project.id === 'catalogo-esplendor-atacadista')
+
+    return {
+      projects: projects.map((project) => {
+        if (project.id !== 'catalogo-esplendor-atacadista' || !catalogDefaults) return project
+        return {
+          ...project,
+          summary: catalogDefaults.summary,
+          description: catalogDefaults.description,
+          solution: catalogDefaults.solution,
+          features: [...new Set([...catalogDefaults.features, ...project.features])],
+          integrations: catalogDefaults.integrations,
+        }
+      }),
+    }
   } catch (error) {
     console.error('Não foi possível carregar os projetos do banco; exibindo os projetos locais:', error)
     return {
