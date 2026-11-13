@@ -40,10 +40,19 @@ const { chromium } = require('playwright');
         await dialog.waitFor({ state: 'hidden' });
       }
       await details.locator('summary').click();
-      results.push({ project: project.name, images: images.length });
+      results.push({ project: project.name, images: images.length, sources: images.map(image => image.src) });
     }
     assert(results.length > 0, 'At least one project must be verified');
     assert(results.some(project => project.images > 8), 'Verify a gallery with more than eight images');
+    const logistics = results.find(project => project.project === 'Gestão Logística');
+    assert(logistics, 'Gestão Logística must be rendered');
+    for (let index = 1; index <= 8; index += 1) {
+      const suffix = String(index).padStart(2, '0');
+      assert(
+        logistics.sources.includes(`/projects/gestao-logistica/operacao-${suffix}.png`),
+        `Gestão Logística must include operacao-${suffix}.png`,
+      );
+    }
     console.log(JSON.stringify(results, null, 2));
   } finally {
     await browser.close();

@@ -163,6 +163,27 @@ export async function getProjectCases(): Promise<ProjectCase[]> {
     }
   }
 
+  const [logisticsGalleryV2Seeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'gestao_logistica_gallery_v2'`
+  if (!logisticsGalleryV2Seeded) {
+    const logisticsIndex = rows.findIndex((row) => String(row.id) === 'gestao-logistica')
+    const defaultLogistics = defaultProjects().find((project) => project.id === 'gestao-logistica')
+
+    if (logisticsIndex >= 0 && defaultLogistics) {
+      const savedProject = unpackProject(rows[logisticsIndex].data)
+      const defaultSources = new Set(defaultLogistics.gallery.map((image) => image.src))
+      const retainedGallery = savedProject.gallery.filter((image) => !defaultSources.has(image.src))
+      const updatedProject = {
+        ...savedProject,
+        gallery: [...defaultLogistics.gallery, ...retainedGallery],
+      }
+
+      await sql`UPDATE portfolio_projects SET data = ${JSON.stringify(updatedProject)}::jsonb, updated_at = NOW() WHERE id = 'gestao-logistica'`
+      rows[logisticsIndex] = { ...rows[logisticsIndex], data: updatedProject }
+    }
+
+    await sql`INSERT INTO portfolio_project_settings (key, value) VALUES ('gestao_logistica_gallery_v2', TRUE) ON CONFLICT (key) DO NOTHING`
+  }
+
   const [marketplaceGallerySeeded] = await sql`SELECT value FROM portfolio_project_settings WHERE key = 'vendas_marketplace_gallery_v1'`
   if (!marketplaceGallerySeeded) {
     const marketplaceIndex = rows.findIndex((row) => String(row.id) === 'vendas-marketplace')
