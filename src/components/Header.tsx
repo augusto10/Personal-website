@@ -21,8 +21,7 @@ export function Header() {
       <a href="#main-content" className="skip-link">Pular para o conteúdo</a>
       <div className="container-max header-inner">
         <a href="#home" onClick={closeMenu} className="wordmark">
-          <span className="block truncate">{site.shortName}</span>
-          <small>Soluções digitais para empresas</small>
+          <span className="wordmark-name">{site.shortName}<small>Soluções digitais para empresas</small></span>
         </a>
         <nav aria-label="Navegação principal" className="desktop-nav">
           <a href="#servicos" className="py-3 transition hover:text-portfolio-accent">Serviços</a>
@@ -31,7 +30,7 @@ export function Header() {
           <a href="#experiencia" className="py-3 transition hover:text-portfolio-accent">Como trabalho</a>
         </nav>
         <div className="flex items-center gap-2">
-          <a href={site.contacts.whatsapp} target="_blank" rel="noreferrer" className="btn-primary min-h-11 px-3 py-2.5 text-xs sm:px-4 sm:text-sm">Vamos conversar</a>
+          <a href={site.contacts.whatsapp} target="_blank" rel="noreferrer" className="btn-primary min-h-11 px-3 py-2.5 text-xs sm:px-4 sm:text-sm"><span className="sm:hidden">Conversar</span><span className="hidden sm:inline">Vamos conversar</span></a>
           <button
             type="button"
             className="menu-toggle inline-flex lg:hidden"

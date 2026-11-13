@@ -22,8 +22,8 @@ export default async function Page() {
       <main id="main-content" tabIndex={-1}>
         <StructuredData />
         <Hero />
-        <Cases projects={projects} databaseWarning={databaseWarning} />
         <Services />
+        <Cases projects={projects} databaseWarning={databaseWarning} />
         <Automations />
         <Experience />
         <Contact />

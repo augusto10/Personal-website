@@ -1,34 +1,35 @@
 import { site } from '@/config/site'
+import { AppWindow, Blocks, Cable, Globe2, Smartphone, Workflow } from 'lucide-react'
 
 const solutions = [
   {
-    problem: 'Sua presença digital não representa a qualidade do seu negócio?',
     title: 'Sites profissionais',
+    icon: Globe2,
     description: 'Sites institucionais e páginas de apresentação com conteúdo claro, identidade própria e navegação responsiva.',
   },
   {
-    problem: 'O processo da equipe não cabe em ferramentas prontas?',
     title: 'Sistemas sob medida',
+    icon: AppWindow,
     description: 'Aplicações web que organizam fluxos, informações e tarefas de acordo com a rotina da sua empresa.',
   },
   {
-    problem: 'O time repete tarefas que poderiam seguir um fluxo automático?',
     title: 'Automações',
+    icon: Workflow,
     description: 'Rotinas digitais para reduzir etapas manuais e conectar processos que hoje dependem de retrabalho.',
   },
   {
-    problem: 'Seus produtos são difíceis de consultar e apresentar online?',
     title: 'Catálogos digitais',
+    icon: Blocks,
     description: 'Catálogos pesquisáveis para facilitar a consulta comercial e manter informações alinhadas às fontes de dados.',
   },
   {
-    problem: 'Os sistemas da empresa não compartilham as informações necessárias?',
     title: 'Integrações com ERP',
+    icon: Cable,
     description: 'APIs e integrações para conectar aplicações empresariais com segurança e consistência.',
   },
   {
-    problem: 'Sua operação também precisa funcionar bem no celular?',
     title: 'Aplicativos',
+    icon: Smartphone,
     description: 'Experiências mobile e aplicações para apoiar serviços, equipes e processos em diferentes dispositivos.',
   },
 ]
@@ -47,14 +48,14 @@ export function Services() {
         </div>
 
         <div className="solution-list">
-          {solutions.map(({ problem, title, description }) => (
+          {solutions.map(({ title, description, icon: Icon }) => (
             <article
               key={title}
               className="solution-item"
             >
+              <Icon className="solution-icon" size={23} strokeWidth={1.6} aria-hidden="true" />
               <h3>{title}</h3>
               <p>{description}</p>
-              <p className="solution-problem">{problem}</p>
             </article>
           ))}
         </div>
