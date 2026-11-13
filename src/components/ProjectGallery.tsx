@@ -20,7 +20,7 @@ function Media({ item, className = '' }: { item: ProjectImage; className?: strin
 }
 
 export function ProjectGallery({ images, compact = false }: { images: ProjectImage[]; compact?: boolean }) {
-  const media = images.filter((item, index, list) => !item.placeholder && list.findIndex((candidate) => candidate.src === item.src) === index).slice(0, 8)
+  const media = images.filter((item, index, list) => !item.placeholder && list.findIndex((candidate) => candidate.src === item.src) === index)
   const [active, setActive] = useState<number | null>(null)
   const dialogRef = useRef<HTMLDivElement>(null)
   const closeButtonRef = useRef<HTMLButtonElement>(null)

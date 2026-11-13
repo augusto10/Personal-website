@@ -13,7 +13,7 @@ export function CaseStudy({ project, featured = false }: { project: ProjectCase;
         alt: `Imagem de apresentação do projeto ${project.name}`,
       }
     : project.image
-  const galleryImages = project.gallery.filter((image) => image.src !== coverImage.src)
+  const galleryImages = [coverImage, ...project.gallery]
 
   return (
     <article className={`project-case ${featured ? 'project-case-featured' : ''}`}>
